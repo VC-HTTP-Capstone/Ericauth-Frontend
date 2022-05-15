@@ -181,9 +181,11 @@ export default {
           this.$store.commit("persistedInfo", {
             team: data.team
           });
-          this.$router.push('auth_management')
-          })
-          
+          this.$router.push("auth_management");
+        })
+        .catch(error => {
+          alert("잘못된 입력입니다.");
+        });
     },
     signIn_association: function() {
       const auth = getAuth();
