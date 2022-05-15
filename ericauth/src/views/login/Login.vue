@@ -155,7 +155,7 @@ export default {
   },
   methods: {
     signIn_student: function() {
-      fetch("http://127.0.0.1:8080/api/login", {
+      fetch("http://localhost:8080/api/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
@@ -166,7 +166,24 @@ export default {
         })
       })
         .then(response => response.json())
-        .then(data => console.log(data));
+        .then(data => {
+          console.log(data);
+          console.log(data.name);
+          this.$store.commit("persistedID", {
+            value: data.email
+          });
+          this.$store.commit("persistedInfo", {
+            value: data.name
+          });
+          this.$store.commit("persistedInfo", {
+            student_id: data.student_id
+          });
+          this.$store.commit("persistedInfo", {
+            team: data.team
+          });
+          this.$router.push('auth_management')
+          })
+          
     },
     signIn_association: function() {
       const auth = getAuth();
