@@ -11,7 +11,7 @@ const store = new Vuex.Store({
     name: "hongildong",
     team:"ex",
     student_id:"2xxxxxxxxx",
-    phoneNumer:"010-1234-5678",
+    phoneNumer:"010-0000-0000",
     paymentStatus:false,
   },
   getter: {
@@ -21,10 +21,17 @@ const store = new Vuex.Store({
     persistedID (state,payload) {
       state.email = payload.value;
     },
-    persistedInfo (state,payload) {
+    persistedName (state,payload) {
       state.name = payload.value;
-      state.student_id = payload.student_id;
-      state.team = payload.team;
+    },
+    persistedSnum (state,payload) {
+      state.student_id = payload.value;
+    },
+    persistedTeam (state,payload) {
+      state.team = payload.value;
+    },
+    persistedPnum (state,payload) {
+      state.phoneNumer = payload.value;
     }
   },
   action: {

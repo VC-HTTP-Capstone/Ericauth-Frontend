@@ -29,7 +29,7 @@
                   </div>
                   <div class="btndata">
                     <span class="btnfont">
-                      {{ this.name }}
+                      {{ this.$store.state.name }}
                     </span>
                   </div>
                 </button>
