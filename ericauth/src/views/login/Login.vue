@@ -144,16 +144,83 @@
 
 <script>
 import { getAuth, signInWithEmailAndPassword, signOut } from "firebase/auth";
+import { JSEncrypt } from "jsencrypt";
 export default {
   data() {
     return {
       email: "",
       password: "",
       name: "",
-      toggle: true
+      toggle: true,
+      publicKey:
+        " -----BEGIN PUBLIC KEY-----\
+MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAgaNPa/81lCEztBa6ezW5\
+qMuPjestbjDO7mxAZuwrGd4UWP0jfbomZ2HnBwbjaBNCt4uPAj8NRtedPYul1CvB\
+Nm25jYAgWQvxiqzr36OR3zxeqZYiwKMO/ZJpMlzkLNI22ZvPGW/aGJkWHCEiKvGC\
+nl3cLY/OSFjnmGKqbcetZHbfD4zaGCKHvpe0FdblD5GLhmOB1MoNz0jC7IpMgqdk\
+tyoE4V+wDpMbYthheLmIB8i1xTMqHCDXbcIdycWxNCOQ4I0HINGYWR4s2JjWInuA\
+0AfQXzZJ1EePSDV7f42Muf4tO7fVRXE53YVUCZyFpk72XdpzS70mfVA2urOkifIB\
+ewIDAQAB\
+-----END PUBLIC KEY-----",
+      privateKey:
+        " -----BEGIN RSA PRIVATE KEY-----\
+MIIEogIBAAKCAQEAgaNPa/81lCEztBa6ezW5qMuPjestbjDO7mxAZuwrGd4UWP0j\
+fbomZ2HnBwbjaBNCt4uPAj8NRtedPYul1CvBNm25jYAgWQvxiqzr36OR3zxeqZYi\
+wKMO/ZJpMlzkLNI22ZvPGW/aGJkWHCEiKvGCnl3cLY/OSFjnmGKqbcetZHbfD4za\
+GCKHvpe0FdblD5GLhmOB1MoNz0jC7IpMgqdktyoE4V+wDpMbYthheLmIB8i1xTMq\
+HCDXbcIdycWxNCOQ4I0HINGYWR4s2JjWInuA0AfQXzZJ1EePSDV7f42Muf4tO7fV\
+RXE53YVUCZyFpk72XdpzS70mfVA2urOkifIBewIDAQABAoIBACrYartq0a5vesMe\
+b+ugyge7n2psO8ubXgj2xiI+E9Cs0VTH9R7skxzAArcT07zmALrg6Rb4985eHJ3m\
+tZv2ChmPEjBuFELZ667Fj/+N8/wv26l48WtxeNbduN7oTJFzuKUbFct2aEKQ9fm+\
+CajfwSfOJaL5UFgg6go3MdSuleQJ3OM2xdSuth+uTrj/yZTBXlg+mtmQJyrf1q+9\
+xdT7jogxw0YiI4QDPeNFiPv7pLv0l5A7dwiJs+CeRhVEBiy4zfKxY9TKZ+BDMlPY\
+QZjiWKHgFB+YzAs60QWVUOvGy/bQWpeMhgKPcRT/9N5q5VD8k8l/mRS1edgEgzBD\
+HDPN1KECgYEAwx/LB6URWd8fNgMClm2zjsX4uU5LKmTh5zeQ9JNXWXEnw7jY6k4y\
+cc62BC5FzYYfMeaxxXEeRQhEED9MHVyu7do81wITRbeEfIyTEslVcJk3aZbngy/1\
+bOW8bybqdQX9zkLymU2IU4QHhRcq6aF81xzhhnQrVBvghigrcm/5LI8CgYEAqhVA\
+RfOOneOUHt4iVFimHhwG5k6spJjizDSRFMUsWzhjypdTLL2aXTK0feS03dOTcV/d\
+QmSPWuoHc9oQHHXv5rreUTwfa4OjZZyxN2XFpkQLAA4rv6ULH2bLa7yI55q0eeuX\
+Q3LnrMMYDFSjlVqy9T+DmktdpWdFSt9UF4uNalUCgYByY20O6kIlwZv2egVGUsF0\
+7bJGUBPYopOcjQK5nrcShDefkfn4QidoeJpUERxyxDH9exS0fwAT0Ci2raTdgbw7\
+TDlmgpzxvgg5S9/cn5MrE2dcy06lpbPnRzcUomfIet6z0KOQI9fLvhb6ev55QGaD\
+ZTcBL5FHGaCihWITEHmvGQKBgAgOOZ0WjAquXLWZj8au7C9A5JLD5ylklFlXpAd3\
+z0ICybcus6HK2STQ4fuUeXyIKNOV1sTuPlvv+apjCaBPda1X7G+siVBuS67kXQBi\
+sZnOXzcBdND+4Cf8lmXj6BgQG7wqjF+FcbOdCeaLm7PXN+Klv3XvW+AZpA6HxVPY\
+KDqBAoGAaUTXDhM+xCVp188BhEXAiN50Ci9IfW8aUEkAiH48MBOH3tB5oGHW8kTZ\
+QGPuLOZ9/qZVDuE1lKr7FWw9n9UG5pdmn2Os6Sc+bhGRc9B2DJLIBdxpnHDHflGE\
+TCR1uCSbcK/bSkcq5MKKv+vTRW0if4x9czBCd7XuhOMWozl2+dc=\
+-----END RSA PRIVATE KEY-----"
     };
   },
   methods: {
+    // Encrypted and Decrypted
+    // signIn_student: function() {
+    //   let encryptor = new JSEncrypt();
+    //   encryptor.setPublicKey(this.publicKey);
+    //   let encrypted = encryptor.encrypt(this.email);
+
+    //   let decrypt = new JSEncrypt();
+    //   decrypt.setPrivateKey(this.privateKey);
+    //   let decrypted = decrypt.decrypt(encrypted);
+    //   console.log(encrypted);
+    //   console.log(decrypted);
+    //   fetch("http://localhost:8080/api/rsa", {
+    //     method: "POST",
+    //     headers: {
+    //       "Content-Type": "application/json"
+    //     },
+    //     body: JSON.stringify({
+    //       encrypted: encrypted
+    //     })
+    //   })
+    //     .then(response => response.json())
+    //     .then(data => {
+    //       console.log(data);
+    //     })
+    //     .catch(error => {
+    //       console.log(error);
+    //     });
+    // },
     signIn_student: function() {
       fetch("http://localhost:8080/api/login", {
         method: "POST",
