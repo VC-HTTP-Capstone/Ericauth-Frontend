@@ -15,7 +15,7 @@
         <input placeholder="인증서 이름을 입력해 주세요" type="text" class="issuename" v-model="issueName">
       </div>
       <div style="margin-top:30px;">
-        <button class="issuebtn"> 발급 </button>
+        <button class="issuebtn" @click="issue"> 발급 </button>
         <button class="removebtn" @click="cancle"> 취소 </button>
       </div>
     </center>
@@ -33,7 +33,7 @@ export default {
   data(){
     return{
       issueName:'',
-      theValue: this.$store.state.email,
+      theValue: this.$store.state.qrData,
     }
   },
   components: {
@@ -42,6 +42,27 @@ export default {
   methods: {
     cancle: function(){
       this.$router.push('auth_management');
+    },
+    issue: function(){
+      fetch("http://localhost:8080/api/qr/save", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          email: this.$store.state.email,
+          qrName: this.issueName,
+          encryptedData: this.$store.state.qrData
+        })
+      })
+        .then(response => response.json())
+        .then(data => {
+          this.$router.push("auth_management");
+        })
+        .catch(error => {
+          console.log(error);
+          alert("이름을 입력하세요.");
+        });
     }
   }
 }

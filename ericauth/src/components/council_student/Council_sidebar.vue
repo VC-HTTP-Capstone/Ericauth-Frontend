@@ -2,43 +2,29 @@
   <div class="left fade1s">
     <div class="user_box">
       <div style="width:50%; float:left; box-sizing: border-box;">
-        <img src="../assets/user.png" width="50" height="50" style="margin-top:35px; margin-left:20px;">
+        <img src="../../assets/user.png" width="50" height="50" style="margin-top:35px; margin-left:20px;">
       </div>
       <div class = "id" style="width:50%; float:right; box-sizing: border-box;">
-          {{ this.$store.state.name }}
+          소프트웨어융합대학
           <hr>
           {{ this.$store.state.team }}
           <hr>
           {{ this.$store.state.student_id }}
       </div>
     </div>
-    <router-link to="/auth_management">
+    <router-link to="/council_student_holding_event">
       <div class="sidebar" style="color:white; margin-top:20px;">
-        <img src="../assets/document.png" width="45" height="45" class="mr-3" alt="">
-        인증서 관리
+        <img src="../../assets/document.png" width="45" height="45" class="mr-3" alt="">
+        행사개최
       </div>
     </router-link>
-    <router-link to="/customer_service">
+    <router-link to="/event_check">
       <div class="sidebar" style="color:white;">
-        <img src="../assets/service.png" width="45" height="45" class="mr-3" alt="">
-        고객센터
-      </div>
-    </router-link>
-    <router-link to="/notice">
-      <div class="sidebar" style="color:white;">
-        <img src="../assets/notice.png" width="45" height="45" class="mr-3" alt="">
-        공지사항
+        <img src="../../assets/service.png" width="45" height="45" class="mr-3" alt="">
+        행사조회
       </div>
     </router-link>
     <div class="sidebar" style="margin-top:180px">
-          <a class="navbar-brand" href="https://github.com/VC-HTTP-Capstone/ERICAUTH">
-            <img src="../assets/github.png" width="45" height="45" class="mr-3" alt="">
-            Github
-          </a>
-          <a class="navbar-brand" href="https://join.slack.com/t/vc-http-capstone/shared_invite/zt-soapb2du-71HHryNDNlY2XtaSSbE7Tw">
-            <img src="../assets/slack.png" width="45" height="45" class="mr-3" alt="">
-            Slack
-          </a>
     </div>
 
   </div>
@@ -84,7 +70,7 @@ div.left {
 }
 .id {
   font-family: 'IBM Plex Sans KR', sans-serif;
-  font-size: 16px;
+  font-size: 12px;
   text-align: center;
 }
 </style>

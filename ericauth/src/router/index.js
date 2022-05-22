@@ -17,6 +17,9 @@ import Qrscan from "../views/management/Qrscan.vue";
 import VpWallet from "../views/management/VpWallet.vue";
 import Nightmeal from "../views/context/NightFoodContext.vue";
 import Test from "../test.vue";
+import Holdingevent from "../views/student_council/council_student_holding_event.vue";
+import EventCheck from "../views/student_council/eventCheck.vue";
+import Mywallet from "../views/authentication/wallet/Mywallet.vue";
 
 Vue.use(VueRouter);
 
@@ -94,6 +97,18 @@ export const router = new VueRouter({
     {
       path: "/nightfoodcontext",
       component: Nightmeal
-    }
+    },
+    {
+      path: "/council_student_holding_event",
+      component: Holdingevent
+    },
+    {
+      path: "/event_check",
+      component: EventCheck
+    },
+    {
+      path: "/Mywallet",
+      component: Mywallet
+    },
   ]
 });

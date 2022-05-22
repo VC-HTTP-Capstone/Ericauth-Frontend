@@ -13,6 +13,10 @@ const store = new Vuex.Store({
     student_id:"2xxxxxxxxx",
     phoneNumer:"010-0000-0000",
     paymentStatus:false,
+    publicKey:"abc",
+    privateKey:"cba",
+    qrData:"abcde",
+    qrDetail: "abcde"
   },
   getter: {
 
@@ -32,6 +36,18 @@ const store = new Vuex.Store({
     },
     persistedPnum (state,payload) {
       state.phoneNumer = payload.value;
+    },
+    persistedPublickey (state,payload) {
+      state.publicKey = payload.value;
+    },
+    persistedPrivatekey (state,payload) {
+      state.privateKey = payload.value;
+    },
+    persistedQrdata (state,payload) {
+      state.qrData = payload.value;
+    },
+    persistedQrdetail (state,payload) {
+      state.qrDetail = payload.value;
     }
   },
   action: {

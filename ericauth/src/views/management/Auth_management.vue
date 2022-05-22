@@ -8,44 +8,44 @@
       </div>
       <hr />
     </div>
-    <div style="margin-top:50px; margin-left:70px; margin-right:300px; text-align:center;">
-      <div style="float:left;width:50%;height:50%; border-right: 3px solid #A4B9C6; border-bottom: 3px solid #A4B9C6;" class="py-4 ">
-        <img src="../../assets/document.png" border="1" width="180" height="180" alt="상,좌">
+
+
+    <div style="margin-top:50px; margin-left:70px; margin-right:70px; text-align:center;">
+      <a class="a" href="/wallet" style="float:left; width:48%; padding:140px; height:600px; border: 3px solid #0080ff; border-radius: 70px">
+        <img src="../../assets/document.png" border="1" width="100%" height="80%" alt="">
+        <div style="margin-top:100px;" class="text">내 인증서 관리</div>
+      </a>
+
+      <a class="a" href="/wallet-ui-store" style="clear:right;float:right;width:48%;height:600px;padding:140px; border: 3px solid #0080ff; border-radius: 70px">
+        <img src="../../assets/issuer.png" border="1" width="100%" height="80%" alt="">
         <div style="clear: both; margin-top:30px;">
-          <a class="button_style btn btn-secondary" href="/wallet">내 인증서 관리</a>
-        </div>
-      </div>
-
-      <div style="clear:right;float:right;width:50%;height:50%;border-bottom: 3px solid #A4B9C6;" class="py-4">
-        <img src="../../assets/issuer.png" border="1" width="180" height="180" alt="상,좌">
-        <div style="clear: both; margin-top:30px;">
-          <a class="button_style btn btn-secondary" href="/wallet-ui-store">인증서 발급받기</a>
+          <div style="margin-top:100px;" class="text">인증서 발급받기</div>
 
         </div>
-      </div>
+      </a>
 
-      <div style="float:left;width:50%;height:50%;border-right: 3px solid #A4B9C6;" class="py-5">
-        <img src="../../assets/verifier.png" border="1" width="180" height="180" alt="상,좌">
+      <!-- <div style="float:left;width:50%;height:50%;border-right: 3px solid #A4B9C6;" class="py-5"> -->
+        <!-- <img src="../../assets/verifier.png" border="1" width="180" height="180" alt="상,좌"> -->
         <!-- <router-link to="/qrscan"> -->
-        <div style="clear: both; margin-top:30px;">
+        <!-- <div style="clear: both; margin-top:30px;">
           <button id="verify_nightmeal_button" class="button_style btn btn-secondary" type="button" v-on:click="goTo">인증하기</button>
-        </div>
+        </div> -->
         <!-- </router-link> -->
 
 
-        <div class="hide" id="resultsPanel">
+        <!-- <div class="hide" id="resultsPanel">
           <center>
             <p><strong style="color:white" class="text bg-dark sweep">Result of Request</strong></p>
           </center>
           <code style="color:black" id="getResults" class="fadedin"></code>
         </div>
-      </div>
+      </div> -->
 
-      <div style="clear:right;float:right;width:50%;height:50%;" class="mt-5 py-5">
-        <div style="margin-top:70px;">
+      <!-- <div style="clear:right;float:right;width:50%;height:50%;" class="mt-5 py-5"> -->
+        <!-- <div style="margin-top:70px;">
           <span class="profile">Comming Soon..</span>
-        </div>
-      </div>
+        </div> -->
+      <!-- </div> -->
     </div>
   </div>
 </div>
@@ -56,10 +56,9 @@ import LeftSideBar from '../../components/Sidebar.vue';
 
 
 export default {
-  name: 'auth_management',
   methods: {
     goTo() {
-      this.$router.push("vpwallet");
+      this.$router.push("Qrscan");
     }
   },
   components: {
@@ -87,7 +86,7 @@ export default {
 
 .profile {
   text-align: left;
-  font-size: 25px;
+  font-size: 40px;
   font-family: 'SEBANG_Gothic_Bold';
 }
 
@@ -105,7 +104,7 @@ div.right {
   width: 83%;
   height: 100vh;
   float: right;
-  background: rgba(16, 50, 92, 0.150);
+  background: white;
 }
 
 @font-face {
@@ -121,4 +120,26 @@ div.right {
   font-weight: normal;
   font-style: normal;
 }
+.a {
+  display: block;
+  width: 500px;
+  height: 500px;
+  text-decoration-line : none
+}
+.a img {
+  transition: all 0.2s linear;
+}
+.a:hover img{
+  transform: scale(1.4);
+
+}
+a.mButton span {
+
+}
+.text {
+  color: black;
+  font-family: 'IBM Plex Sans KR', sans-serif;
+  font-size: 24px;
+}
+
 </style>

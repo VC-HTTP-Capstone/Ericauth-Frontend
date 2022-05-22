@@ -2,17 +2,24 @@
 <div>
   <LeftSideBar></LeftSideBar>
   <div class="right fade1s">
-    <meta charset="utf-8">
+    <div style="margin-top:30px; margin-left:50px; margin-right:300px;">
+      <div class="profile">
+        <span>증명서 발급 신청</span>
+      </div>
+      <hr />
+    </div>
     <div id="confirm">
-      <center>
-        <div style="margin-top:80px;">
-          <span class="sidebar" style="font-size:50px; color:black;">인증서 발급 받기</span>
-        </div>
+      <div class="font"style="margin-top:60px;">ㅁ 학생회비 납부 영수증 첨부</div>
+      <br>
+      <input type="file" @change='onInputImage()' ref='serveyImage' accept="img/JPG" required style="margin-top:30px; margin-left:40px;">
+
+
+
+
         <div style="margin-top:70px;">
-          <button style="width:200px; margin-right:100px; margin-left:100px;" class="button_style btn btn-primary fade3s sidebar" @click="issueNightmeal">발급</button>
+          <button style="width:200px; margin-right:100px; margin-left:100px;" class="button_style btn btn-primary fade3s sidebar" @click="issueNightmeal">발급신청</button>
           <a style="width:200px; margin-right:100px; margin-left:100px;" class="button_style btn btn-primary fade3s sidebar" href="/auth_management">취소</a>
         </div>
-      </center>
     </div>
   </div>
 </div>
@@ -34,12 +41,21 @@ let Idate = year + "-" + month + "-" + date + "T" + hours + ":" + minutes + ":" 
 export default {
   data(){
     return{
-      email:this.$store.state.email
+      email:this.$store.state.email,
+      student_id:this.$store.state.student_id,
+      name:this.$store.state.name,
+      image: '',
     }
   },
   methods:{
+    onInputImage: function(){
+      this.image = this.$refs.serveyImage.files
+      console.log("this input image : ", this.image);
+    },
+
     issueNightmeal: function(){
-      console.log(this.email);
+      // console.log(this.email);
+      // console.log(this.student_id);
       let url = 'https://test-edc56-default-rtdb.firebaseio.com/' + this.email.replaceAll('.','-') + '/vc.json';
       console.log(url);
       var payment = {
@@ -47,6 +63,7 @@ export default {
             "@context": [
               "127.0.0.1:8080/nightfood",
             ],
+            "name": this.name,
             "id": "vc-http " + this.email,
             "type": [
               "nightmealverifycredential",
@@ -71,8 +88,15 @@ export default {
         payment
       })
       });
-      alert("증명서 발급 성공!")
-      this.$router.push('auth_management')
+      console.log(payment);
+      if(this.image === ""){
+        alert("영수증이 첨부되지 않았습니다.")
+      }
+      else{
+        alert("발급신청이 완료되었습니다.")
+        this.$router.push('auth_management')
+      }
+
     },
   },
   components : {
@@ -117,7 +141,7 @@ div.right {
   width: 83%;
   height: 100vh;
   float: right;
-  background: rgba(16, 50, 92, 0.150);
+  background: white;
 }
 
 .sidebar {
@@ -160,5 +184,15 @@ div.right {
   border-radius: 40px;
 
   outline: none;
+}
+.font {
+  font-family: 'IBM Plex Sans KR', sans-serif;
+  font-size: 25px;
+  margin-left: 40px;
+}
+.profile {
+  text-align: left;
+  font-size: 40px;
+  font-family: 'SEBANG_Gothic_Bold';
 }
 </style>

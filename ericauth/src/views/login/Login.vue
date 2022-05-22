@@ -239,14 +239,23 @@ TCR1uCSbcK/bSkcq5MKKv+vTRW0if4x9czBCd7XuhOMWozl2+dc=\
           this.$store.commit("persistedID", {
             value: data.email
           });
-          this.$store.commit("persistedInfo", {
+          this.$store.commit("persistedName", {
             value: data.name
           });
-          this.$store.commit("persistedInfo", {
-            student_id: data.student_id
+          this.$store.commit("persistedSnum", {
+            value: data.student_id
           });
-          this.$store.commit("persistedInfo", {
-            team: data.team
+          this.$store.commit("persistedTeam", {
+            value: data.team
+          });
+          this.$store.commit("persistedPnum", {
+            value: data.phoneNumber
+          });
+          this.$store.commit("persistedPublickey", {
+            value: this.publicKey
+          });
+          this.$store.commit("persistedPrivatekey", {
+            value: this.privateKey
           });
           this.$router.push("auth_management");
         })
