@@ -98,7 +98,7 @@
           return;
         }
         var text = this.makeSerial();
-        this.obj["email"] = "test";
+        this.obj["email"] = this.$store.state.email;
         this.obj["serialNumber"] = text;
         this.obj["paymentStatus"] = this.radioValues;
         this.obj["eventName"] = this.event_name;

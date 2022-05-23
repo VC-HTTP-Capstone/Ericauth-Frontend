@@ -20,6 +20,7 @@ import Test from "../test.vue";
 import Holdingevent from "../views/student_council/council_student_holding_event.vue";
 import EventCheck from "../views/student_council/eventCheck.vue";
 import Mywallet from "../views/authentication/wallet/Mywallet.vue";
+import Qrscanner from "../views/student_council/qrscanner.vue";
 
 Vue.use(VueRouter);
 
@@ -110,5 +111,9 @@ export const router = new VueRouter({
       path: "/Mywallet",
       component: Mywallet
     },
+    {
+      path: "/qrscanner",
+      component: Qrscanner
+    }
   ]
 });

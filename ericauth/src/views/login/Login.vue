@@ -116,7 +116,7 @@
                   class="button_style btn btn-primary fade3s"
                   style="margin-bottom:20px; border-radius: 10px;"
                   type="button"
-                  v-on:click="signIn_association"
+                  v-on:click="signIn_council"
                 >
                   로그인
                 </button>
@@ -193,34 +193,6 @@ TCR1uCSbcK/bSkcq5MKKv+vTRW0if4x9czBCd7XuhOMWozl2+dc=\
     };
   },
   methods: {
-    // Encrypted and Decrypted
-    // signIn_student: function() {
-    //   let encryptor = new JSEncrypt();
-    //   encryptor.setPublicKey(this.publicKey);
-    //   let encrypted = encryptor.encrypt(this.email);
-
-    //   let decrypt = new JSEncrypt();
-    //   decrypt.setPrivateKey(this.privateKey);
-    //   let decrypted = decrypt.decrypt(encrypted);
-    //   console.log(encrypted);
-    //   console.log(decrypted);
-    //   fetch("http://localhost:8080/api/rsa", {
-    //     method: "POST",
-    //     headers: {
-    //       "Content-Type": "application/json"
-    //     },
-    //     body: JSON.stringify({
-    //       encrypted: encrypted
-    //     })
-    //   })
-    //     .then(response => response.json())
-    //     .then(data => {
-    //       console.log(data);
-    //     })
-    //     .catch(error => {
-    //       console.log(error);
-    //     });
-    // },
     signIn_student: function() {
       fetch("http://localhost:8080/api/login", {
         method: "POST",
@@ -263,46 +235,32 @@ TCR1uCSbcK/bSkcq5MKKv+vTRW0if4x9czBCd7XuhOMWozl2+dc=\
           alert("잘못된 입력입니다.");
         });
     },
-    signIn_association: function() {
-      const auth = getAuth();
-      let url =
-        "https://test-edc56-default-rtdb.firebaseio.com/" +
-        this.email.replaceAll(".", "-") +
-        "/information.json";
-      var jsonTest;
-      let self = this;
-      signInWithEmailAndPassword(auth, this.email, this.password)
-        .then(userCredential => {
-          const user = auth.currentUser;
-          alert("로그인 성공!");
-          if (user) {
-            this.$store.commit("persistedID", {
-              value: auth.currentUser.email
-            });
-            self.$router.push("verifyType");
-          } else {
-            console.log("routing error");
-          }
+    signIn_council: function() {
+      fetch("http://localhost:8080/api/login/admin", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          email: this.email,
+          password: this.password
         })
-        .catch(error => {
-          const errorCode = error.code;
-          const errorMessage = error.message;
-          console.log(errorCode);
-          console.log(errorMessage);
-          alert("로그인 실패");
-        });
-    },
-    logOut: function() {
-      const auth = getAuth();
-      signOut(auth)
-        .then(() => {
-          console.log(auth);
+      })
+        .then(response => response.json())
+        .then(data => {
           this.$store.commit("persistedID", {
-            value: "empty"
+            value: data.email
           });
+          this.$store.commit("persistedTeam", {
+            value: data.team
+          });
+          this.$store.commit("persistedPnum", {
+            value: data.phoneNumber
+          });
+          this.$router.push("council_student_holding_event");
         })
         .catch(error => {
-          console.log("error");
+          alert("잘못된 입력입니다.");
         });
     }
   }
