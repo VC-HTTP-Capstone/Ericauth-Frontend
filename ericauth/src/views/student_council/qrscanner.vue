@@ -9,7 +9,7 @@
       </div>
 
       <div class="scanner_layout">
-        <StreamBarcodeReader></StreamBarcodeReader>
+        <StreamBarcodeReader @decode="readData"></StreamBarcodeReader>
       </div>
       </div>
     </div>
@@ -25,6 +25,11 @@ export default {
   components:{
     LeftSideBar,
     StreamBarcodeReader,
+  },
+  methods : {
+    readData (result) {
+      alert(result);
+    }
   }
 }
 </script>
@@ -49,6 +54,8 @@ div.right {
   }
 }
 .scanner_layout{
+  margin-left: 200px;
+  margin-top: 100px;
   width: 500px;
   height: 370px;
 

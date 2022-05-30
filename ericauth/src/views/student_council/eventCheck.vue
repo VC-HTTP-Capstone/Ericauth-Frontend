@@ -9,14 +9,27 @@
         <hr />
         <div class="flex-container" style="margin-top:40px"> <!-- 실제 내용 -->
           <div v-for="list in List"> <!-- 행사별 Area -->
-            <div class = "list" style="padding-top:30px;">
+            <button @click="[isModalViewed = true, getData(), name = list]" class = "list" style="padding-top:30px;">
               {{ list }}
               <div style="margin-top:100px">
                 <a style="color: #7fccde; padding-right: 40px;" @click="loadQRscanner">인증진행</a>
                 <a style="color: red;" @click="deleteEvent(list)">DELETE</a>
               </div>
+
+            </button>
+            <div class="modal_layout" v-if="isModalViewed">
+              <div class="modal_data">
+                <div style="font-size:25px; margin-bottom:30px;">행사 이름 : {{name}}</div>
+                학생회비 확인 : {{abc}}<br>
+                학과 확인 : {{cde}}<br>
+                이름 확인 : {{abc}}<br>
+                학번 확인 : {{cde}}<br>
+              </div>
+              <a class="modal_exit" style="color:red;" @click="isModalViewed = false" >닫기</a>
             </div>
           </div>
+
+
         </div>
       </div>
     </div>
@@ -26,6 +39,7 @@
 
 <script>
 import LeftSideBar from '../../components/council_student/Council_sidebar.vue';
+import ModalView from '../../components/council_student/modalView.vue';
 import { StreamBarcodeReader } from "vue-barcode-reader";
 
 export default {
@@ -35,15 +49,18 @@ export default {
   data() {
     return {
       is_show: false,
-      List: [
-
-      ],
+      List: [],
       obj : {},
+      isModalViewed: false,
+      abc: true,
+      cde: false,
+      name: '',
     }
   },
   components:{
     LeftSideBar,
     StreamBarcodeReader,
+    ModalView,
   },
   methods : {
     deleteEvent : function(eventName) {
@@ -93,6 +110,9 @@ export default {
         .catch(error => {
           alert("잘못된 입력입니다.");
         })
+    },
+    getData : function(){
+      console.log(this.isModalViewed);
     }
   }
 }
@@ -144,12 +164,35 @@ div.right {
   display : inline-flex;
 }
 .modal_layout{
-  width: 200px;
-  height: 200px;
-  margin-top: 100px;
-  border : 1px solid;
+  width: 250px;
+  height: 400px;
+  position: absolute;
+  top: 30%;
+  left: 40%;
+  border : 3px solid;
   border-radius : 15px;
   border-color : skyblue;
+  box-shadow : rgba(0,0,0,0.3) 0 0 0 9999px;
+  transition : opacity .4s linear;
+}
+button.list:hover{
+  background-color: rgb(173, 216, 230, 0.3);
+
+}
+.modal_exit{
+  position: absolute;
+  top:90%;
+  left:45%;
+  font-family: 'IBM Plex Sans KR', sans-serif;
+}
+.modal_data{
+  font-family: 'Poor Story', cursive;
+  font-weight: bold;
+  position: absolute;
+  top:10%;
+  left:20%;
+  line-height: 50px;
+
 }
 
 </style>
