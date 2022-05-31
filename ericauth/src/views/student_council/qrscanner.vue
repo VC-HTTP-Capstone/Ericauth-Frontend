@@ -20,6 +20,7 @@
 <script>
 import LeftSideBar from '../../components/council_student/Council_sidebar.vue';
 import { StreamBarcodeReader } from "vue-barcode-reader";
+import { JSEncrypt } from "jsencrypt";
 
 export default {
   components:{
@@ -28,7 +29,12 @@ export default {
   },
   methods : {
     readData (result) {
-      alert(result);
+      console.log(result);
+      console.log(this.$store.state.privateKey);
+      let decryptor = new JSEncrypt();
+      decryptor.setPrivateKey(this.$store.state.privateKey);
+      let decrypted = decryptor.decrypt(result);
+      console.log(decrypted);
     }
   }
 }

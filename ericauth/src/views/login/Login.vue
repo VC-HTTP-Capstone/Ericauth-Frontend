@@ -257,6 +257,12 @@ TCR1uCSbcK/bSkcq5MKKv+vTRW0if4x9czBCd7XuhOMWozl2+dc=\
           this.$store.commit("persistedPnum", {
             value: data.phoneNumber
           });
+          this.$store.commit("persistedPublickey", {
+            value: this.publicKey
+          });
+          this.$store.commit("persistedPrivatekey", {
+            value: this.privateKey
+          });
           this.$router.push("council_student_holding_event");
         })
         .catch(error => {
