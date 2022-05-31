@@ -16,7 +16,8 @@ const store = new Vuex.Store({
     publicKey:"abc",
     privateKey:"cba",
     qrData:"abcde",
-    qrDetail: "abcde"
+    qrDetail: "abcde",
+    eventName: "ex"
   },
   getter: {
 
@@ -48,6 +49,9 @@ const store = new Vuex.Store({
     },
     persistedQrdetail (state,payload) {
       state.qrDetail = payload.value;
+    },
+    persistedEventname (state,payload) {
+      state.eventName = payload.value;
     }
   },
   action: {

@@ -567,24 +567,42 @@ export default {
       if (this.nameCheck === true) {
         li["name"] = this.name;
       }
+      else{
+        li["name"] = "홍길동";
+      }
       if (this.teamCheck === true) {
         li["team"] = this.team;
+      }
+      else{
+        li["team"] = "홍길동";
       }
       if (this.studentIdCheck === true) {
         li["studentId"] = this.studentId;
       }
+      else{
+        li["studentId"] = "홍길동";
+      }
       if (this.phoneNumerCheck === true) {
         li["phoneNumber"] = this.phoneNumer;
+      }
+      else{
+        li["phoneNumber"] = "홍길동";
       }
       if (this.issuerCheck === true) {
         li["issuer"] = this.issuer;
       }
+      else{
+        li["issuer"] = "홍길동";
+      }
       if (this.paymentStatusCheck === true) {
         li["paymentStatus"] = this.paymentStatus;
       }
+      else{
+        li["paymentStatus"] = "홍길동";
+      }
       let encryptor = new JSEncrypt();
       encryptor.setPublicKey(this.$store.state.publicKey);
-      let encrypted = encryptor.encrypt(li);
+      let encrypted = encryptor.encrypt(JSON.stringify(li));
 
       this.$store.commit("persistedQrdata", {
         value: encrypted

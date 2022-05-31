@@ -18,6 +18,12 @@
         인증서 관리
       </div>
     </router-link>
+    <router-link to="/mywallet">
+      <div class="sidebar" style="color:white; margin-top:20px;">
+        <img src="../assets/document.png" width="45" height="45" class="mr-3" alt="">
+        인증서 지갑
+      </div>
+    </router-link>
     <router-link to="/customer_service">
       <div class="sidebar" style="color:white;">
         <img src="../assets/service.png" width="45" height="45" class="mr-3" alt="">

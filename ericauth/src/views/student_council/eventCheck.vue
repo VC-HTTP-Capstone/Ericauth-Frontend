@@ -12,7 +12,7 @@
             <button @click="[isModalViewed = true, getData(), name = list]" class = "list" style="padding-top:30px;">
               {{ list }}
               <div style="margin-top:100px">
-                <a style="color: #7fccde; padding-right: 40px;" @click="loadQRscanner">인증진행</a>
+                <a style="color: #7fccde; padding-right: 40px;" @click="loadQRscanner(list)">인증진행</a>
                 <a style="color: red;" @click="deleteEvent(list)">DELETE</a>
               </div>
 
@@ -84,8 +84,11 @@ export default {
           alert("잘못된 입력입니다.");
         })
     },
-    loadQRscanner : function() {
-      this.$router.push('qrscanner');
+    loadQRscanner : function(list) {
+      this.$store.commit("persistedEventname", {
+        value: list
+      });
+      this.$router.push("qrscanner");
     },
     loadData : function() {
       this.obj["email"] =this.$store.state.email;
@@ -113,6 +116,7 @@ export default {
     },
     getData : function(){
       console.log(this.isModalViewed);
+      
     }
   }
 }

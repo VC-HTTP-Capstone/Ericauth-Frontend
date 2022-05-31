@@ -29,12 +29,45 @@ export default {
   },
   methods : {
     readData (result) {
-      console.log(result);
-      console.log(this.$store.state.privateKey);
       let decryptor = new JSEncrypt();
       decryptor.setPrivateKey(this.$store.state.privateKey);
       let decrypted = decryptor.decrypt(result);
-      console.log(decrypted);
+      let li = JSON.parse(decrypted);
+      fetch("http://localhost:8080/api/ericaverify", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          name: li.name,
+          team: li.team,
+          studentId: li.studentId,
+          phoneNumber: li.phoneNumber,
+          issuer: li.issuer,
+          paymentStatus: li.paymentStatus,
+          eventName: this.$store.state.eventName,
+          eventEmail: this.$store.state.email
+        })
+      })
+        .then(response => response.json())
+        .then(data => {
+          if(data.result === isWrong){
+            alert("잘못된 인증서 입니다")
+          }
+          else if(data.result === isAlreadyUsed){
+            alert("이미 사용된 인증서 입니다")
+          }
+          else if(data.result === notExisted){
+            alert("존재하지 않는 행사입니다")
+          }
+          else{
+            alert("인증 성공")
+          }
+        })
+        .catch(error => {
+          alert("잘못된 입력입니다.");
+        });
+
     }
   }
 }

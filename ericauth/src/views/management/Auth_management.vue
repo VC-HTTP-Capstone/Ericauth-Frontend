@@ -13,13 +13,21 @@
     <div style="margin-top:50px; margin-left:70px; margin-right:70px; text-align:center;">
       <a class="a" href="/wallet" style="float:left; width:48%; padding:140px; height:600px; border: 3px solid #0080ff; border-radius: 70px">
         <img src="../../assets/document.png" border="1" width="100%" height="80%" alt="">
-        <div style="margin-top:100px;" class="text">내 인증서 관리</div>
+        <div style="margin-top:100px;" class="text">인증서 발급받기</div>
       </a>
 
       <a class="a" href="/wallet-ui-store" style="clear:right;float:right;width:48%;height:600px;padding:140px; border: 3px solid #0080ff; border-radius: 70px">
         <img src="../../assets/issuer.png" border="1" width="100%" height="80%" alt="">
         <div style="clear: both; margin-top:30px;">
-          <div style="margin-top:100px;" class="text">인증서 발급받기</div>
+          <div style="margin-top:100px;" class="text">학생회비 증명서 발급</div>
+
+        </div>
+      </a>
+
+      <a class="a" href="/mywallet" style="clear:right;float:right;width:48%;height:600px;padding:140px; border: 3px solid #0080ff; border-radius: 70px">
+        <img src="../../assets/issuer.png" border="1" width="100%" height="80%" alt="">
+        <div style="clear: both; margin-top:30px;">
+          <div style="margin-top:100px;" class="text">인증서 지갑</div>
 
         </div>
       </a>
