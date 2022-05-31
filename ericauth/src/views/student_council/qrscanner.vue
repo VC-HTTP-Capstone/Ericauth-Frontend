@@ -23,17 +23,27 @@ import { StreamBarcodeReader } from "vue-barcode-reader";
 import { JSEncrypt } from "jsencrypt";
 
 export default {
+  data() {
+    return{
+      check : true
+    }
+  },
   components:{
     LeftSideBar,
     StreamBarcodeReader,
   },
   methods : {
     readData (result) {
+      if(this.check === false){
+        return 0;
+      }
+      this.check = false;
       let decryptor = new JSEncrypt();
       decryptor.setPrivateKey(this.$store.state.privateKey);
       let decrypted = decryptor.decrypt(result);
       let li = JSON.parse(decrypted);
-      fetch("http://localhost:8080/api/ericaverify", {
+      console.log(li);
+      fetch("http://localhost:8080/api/verify", {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
@@ -51,20 +61,25 @@ export default {
       })
         .then(response => response.json())
         .then(data => {
-          if(data.result === isWrong){
+          if(data.result === "isWrong"){
             alert("잘못된 인증서 입니다")
+            this.check = true;
           }
-          else if(data.result === isAlreadyUsed){
+          else if(data.result === "isAlreadyUsed"){
             alert("이미 사용된 인증서 입니다")
+            this.check = true;
           }
-          else if(data.result === notExisted){
+          else if(data.result === "notExisted"){
             alert("존재하지 않는 행사입니다")
+            this.check = true;
           }
           else{
             alert("인증 성공")
+            this.check = true;
           }
         })
         .catch(error => {
+          console.log(error);
           alert("잘못된 입력입니다.");
         });
 
