@@ -34,9 +34,11 @@
              {{team}}
              <div v-show="team===true" style="margin-top:30px">
                <select v-model="college">
-                 <option>소프트웨어융합대학</option>
-                 <option>약학대학</option>
-                 <option>공학대학</option>
+                 <option>기계공학과</option>
+                 <option>전자공학과</option>
+                 <option>분자생명공학과</option>
+                 <option>소프트웨어학부</option>
+                 <option>ICT융합학부</option>
                </select>
              </div>
            </div>
@@ -57,7 +59,7 @@
            {{student_id}}
          </div>
             <div style="margin-top:30px">
-              <button class="summitButton" v-on:click="saveData">submit</button>
+              <button class="summitButton" v-on:click="saveData(event_name)">submit</button>
             </div>
           </div>
 
@@ -88,7 +90,7 @@
       LeftSideBar,
     },
     methods: {
-      saveData: function(){
+      saveData: function(eventName){
         if(this.event_name === ""){
           alert("이벤트 이름을 입력하세요");
           return;
@@ -119,7 +121,8 @@
           .then(response => response.json())
           .then(data => {
             console.log(data);
-            // 저장완료 페이지 이동
+            alert(eventName+" 행사 신청이 완료되었습니다.");
+            this.$router.go();
           })
           .catch(error => {
             alert("잘못된 입력입니다.");
