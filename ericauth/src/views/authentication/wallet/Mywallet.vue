@@ -1,78 +1,87 @@
 <template>
 <div>
   <LeftSideBar></LeftSideBar>
-  <div class="parent">
-    <div class="child2">
-    </div>
-    <div class="child1" v-show="toggle">
-      <div>
-        <center>
-          <div style="border:solid 1px; height: 15vh;line-height:700%; 
-          background-color:#687C99;">
-            <span style="font-size:40px; color:white;">{{ this.Qrname }}</span>
-          </div>
-          <div style="height: 60vh;margin-top:10%;">
-            <div>
-              <wj-barcode-qr-code style="height:60vh; width:60vh;" :value="theValue" ></wj-barcode-qr-code>
+  <div class="right">
+    <div class="container_layout_out fade1s">
+      <div class="container_camera"></div>
+
+      <div style="padding: 5px;">
+        <div style="border:1px;border-radius: 15px;" v-show="!toggle">
+          <center>
+            <div style="border:solid 1px;height:13%; line-height:350%; background-color:#687C99; padding-top:10px;">
+              <span style="font-size:30px;color:white;"> 인증서를 선택해 주세요 </span>
             </div>
-          </div>
-          <div style="margin-top:10%;">
-            <button class="btnboxcheck" @click="change_toggle"> 
-              <span style="color:white;">확인</span> 
-            </button>
-            <button class="btnboxrm" @click="Delete">
-              <span style="color:white;">삭제</span>
-            </button>
-          </div>
-        </center>
-      </div>
-    </div>
-    <div style="background-color:#687C99;" class="child1" v-show="!toggle">
-      <div style="border:solid 1px;height:13%; line-height:650%; background-color:#687C99;">
-        <center>
-          <span style="font-size:30px;color:white;"> 인증서를 선택해 주세요 </span>
-        </center>
-      </div>
-      <div style="height:20%; border:solid 1px; background-color:white;" v-for="(row, index) in rows" :key="row.id">
-        <div class="divbox">
-            <div class="btnparent">
-              <div class="btnchild1"> 
-                <img class="qr"
-                  src="../../../assets/qr.png"
-                />
-                
-              </div>
-              <div class="btnchild2">  
-                <div>
-                  <span class="wordbox">
-                    이름 : {{ row }}
-                  </span>
+
+          </center>
+          <div style="height:20%; border:solid 1px; background-color:white;" v-for="(row, index) in rows" :key="row.id">
+            <div class="divbox">
+                <div class="btnparent">
+                  <div class="btnchild1">
+                    <img class="qr"
+                      src="../../../assets/qr.png"
+                    />
+
+                  </div>
+                  <div class="btnchild2">
+                    <div>
+                      <span class="wordbox">
+                        {{ row }}
+                      </span>
+                    </div>
+                    <div>
+                      <span class="wordbox">
+                        발급 날짜 : 2022/05/07
+                      </span>
+                    </div>
+                    <div>
+                      <span class="wordbox">
+                        만료 날짜 : 2023/05/07
+                      </span>
+                    </div>
+                  </div>
+                  <div style="margin-right: 2%; margin-bottom:2%" class="btnchild1">
+                    <button class="btnbox" @click="check(index)">
+                      <span style="font-size:30px; color:white;"> view </span>
+                    </button>
+
+                  </div>
                 </div>
-                <div>
-                  <span class="wordbox">
-                    발급 날짜 : 2022/05/07
-                  </span>
-                </div>
-                <div>
-                  <span class="wordbox">
-                    만료 날짜 : 2023/05/07
-                  </span>
-                </div>
-              </div>
-              <div style="margin-right: 2%;" class="btnchild1"> 
-                <button class="btnbox" @click="check(index)">
-                  <span style="font-size:30px; color:white;"> view </span>
-                </button>
-                
-              </div>
             </div>
+
+          </div>
+          </div>
+
+
+
+          <div v-show="toggle">
+           <div>
+             <center>
+               <div style="border:solid 1px; height: 15vh;line-height:700%; background-color:#687C99;">
+                 <span style="font-size:40px; color:white;">{{ this.Qrname }}</span>
+               </div>
+               <div style="height: 60vh;margin-top:10%;">
+                 <div>
+                   <wj-barcode-qr-code style="height:40vh; width:40vh;" :value="theValue" ></wj-barcode-qr-code>
+                 </div>
+               </div>
+               <div>
+                 <button class="btnboxcheck" @click="change_toggle">
+                   <span style="color:white;">확인</span>
+                 </button>
+                 <button class="btnboxrm" @click="Delete">
+                   <span style="color:white;">삭제</span>
+                 </button>
+               </div>
+             </center>
+           </div>
+          </div>
         </div>
-        
+
       </div>
     </div>
-    <div class="child2">
-    </div>
+
   </div>
+
 
 </div>
 </template>
@@ -175,6 +184,30 @@ export default {
 
 
 <style scoped>
+.fade1s {
+  animation: fade-in 1.5s ease-in-out;
+}
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+.container_layout_out {
+  margin-top: 20px;
+  margin-left: 400px;
+  width: 400px;
+  height: 95vh;
+  border : 10px solid;
+  border-radius: 30px;
+  overflow : auto;
+  font-family: 'Jua', sans-serif;
+}
+
 .divbox {
   width : 100%;
   border: solid 1px;
@@ -218,16 +251,17 @@ export default {
 .qr {
   height: 15vh;
   width: 15vh;
+  margin-top: 20px;
 }
 .wordbox {
   font-size: 20px;
 }
-.parent {
-  display: flex;
-  height: 100vh;
-}
+
 .child1 {
-  flex: 3;
+  width: 400px;
+  height: 1100px;
+  display: flex;
+  align-content: center;
 }
 .child2 {
   flex: 2;
@@ -244,6 +278,20 @@ export default {
 .btnchild2 {
   flex: 2;
   margin-top:6%;
+}
+
+div.right {
+  width: 83%;
+  height: 100vh;
+  float: right;
+  background: rgba(16, 50, 92, 0.150);
+}
+.container_camera{
+    background-color: black;
+    width: 170px;
+    height: 4%;
+    margin-left: 100px;
+    border-radius : 0 0 15px 15px / 0 0 15px 15px;
 }
 
 

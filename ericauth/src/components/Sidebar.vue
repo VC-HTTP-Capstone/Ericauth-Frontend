@@ -19,8 +19,8 @@
       </div>
     </router-link>
     <router-link to="/mywallet">
-      <div class="sidebar" style="color:white; margin-top:20px;">
-        <img src="../assets/document.png" width="45" height="45" class="mr-3" alt="">
+      <div class="sidebar" style="color:white;">
+        <img src="../assets/mywallet.png" width="45" height="45" class="mr-3" alt="">
         인증서 지갑
       </div>
     </router-link>
@@ -36,16 +36,6 @@
         공지사항
       </div>
     </router-link>
-    <div class="sidebar" style="margin-top:180px">
-          <a class="navbar-brand" href="https://github.com/VC-HTTP-Capstone/ERICAUTH">
-            <img src="../assets/github.png" width="45" height="45" class="mr-3" alt="">
-            Github
-          </a>
-          <a class="navbar-brand" href="https://join.slack.com/t/vc-http-capstone/shared_invite/zt-soapb2du-71HHryNDNlY2XtaSSbE7Tw">
-            <img src="../assets/slack.png" width="45" height="45" class="mr-3" alt="">
-            Slack
-          </a>
-    </div>
 
   </div>
 </template>
@@ -64,7 +54,7 @@ export default {
   margin-right: 30px;
   height: 150px;
   padding: 10px;
-  background-color: #CEE3F6;
+  background-color: #EDE9C1;
   border-radius: 20px;
   border-color: #0080ff;
 }
@@ -83,7 +73,7 @@ div.left {
   width: 17%;
   height: 100vh;
   float: left;
-  background: #0080ff;
+  background: rgba(16, 50, 92, 0.522);
 }
 .fade1s {
   animation: fade-in 1.5s ease-in-out;
