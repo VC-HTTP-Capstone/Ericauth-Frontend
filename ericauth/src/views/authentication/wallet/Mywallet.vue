@@ -228,7 +228,7 @@ export default {
   border: 0;
   outline: 0;
   padding:0;
-  width:20vh;
+  width:15vh;
   height: 5vh;
   background-color: #fd5e53;
   margin-left:5%;
@@ -240,7 +240,7 @@ export default {
   border: 0;
   outline: 0;
   padding:0;
-  width:20vh;
+  width:15vh;
   height: 5vh;
   background-color: #21bf73;
   margin-right:5%;
