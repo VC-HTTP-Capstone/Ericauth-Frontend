@@ -2,7 +2,7 @@
   <div class="left fade1s">
     <div class="user_box">
       <div style="width:50%; float:left; box-sizing: border-box;">
-        <img src="../assets/user.png" width="50" height="50" style="margin-top:35px; margin-left:20px;">
+        <img src="../assets/uth.jpg" width="90px" height="120px" style="margin-top:5px;">
       </div>
       <div class = "id" style="width:50%; float:right; box-sizing: border-box;">
           {{ this.$store.state.name }}
@@ -14,13 +14,13 @@
     </div>
     <router-link to="/auth_management">
       <div class="sidebar" style="color:white; margin-top:20px;">
-        <img src="../assets/document.png" width="45" height="45" class="mr-3" alt="">
+        <img src="../assets/document.png" width="45" height="45" class="mr-3">
         인증서 관리
       </div>
     </router-link>
     <router-link to="/mywallet">
       <div class="sidebar" style="color:white;">
-        <img src="../assets/mywallet.png" width="45" height="45" class="mr-3" alt="">
+        <img src="../assets/mywallet.png" width="45" height="45" class="mr-3">
         인증서 지갑
       </div>
     </router-link>
@@ -54,9 +54,9 @@ export default {
   margin-right: 30px;
   height: 150px;
   padding: 10px;
-  background-color: #EDE9C1;
+  background-color: #EFF1F0;
   border-radius: 20px;
-  border-color: #0080ff;
+  border-color: lightgrey;
 }
 .navbar-brand {
   font-size: 24px;
