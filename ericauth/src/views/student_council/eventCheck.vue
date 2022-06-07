@@ -26,8 +26,9 @@
                   <a
                     style="color: #7fccde; padding-right: 40px;"
                     @click="loadQRscanner(list)"
-                    >인증진행</a
-                  >
+                    >인증진행
+                  </a>
+
                   <a style="color: red;" @click="deleteEvent(list)">DELETE</a>
                 </div>
               </div>
@@ -54,6 +55,9 @@
         </div>
       </div>
     </div>
+    <div class="QR">
+      <QRscanner></QRscanner>
+    </div>
   </div>
 </template>
 
@@ -61,6 +65,7 @@
 import LeftSideBar from "../../components/council_student/Council_sidebar.vue";
 import ModalView from "../../components/council_student/modalView.vue";
 import { StreamBarcodeReader } from "vue-barcode-reader";
+import QRscanner from "./qrscanner.vue";
 
 export default {
   mounted() {
@@ -84,7 +89,8 @@ export default {
   components: {
     LeftSideBar,
     StreamBarcodeReader,
-    ModalView
+    ModalView,
+    QRscanner,
   },
   methods: {
     refreshPage: function() {
@@ -111,7 +117,6 @@ export default {
         });
     },
     loadQRscanner: function(eventName) {
-      console.log("fetched");
       this.obj["email"] = this.$store.state.email;
       fetch("http://localhost:8080/api/event", {
         method: "POST",
@@ -126,7 +131,7 @@ export default {
           });
         })
         .then(data => {
-          this.$router.push("qrscanner");
+          this.$router.push({name : "qrscanner", query : {name : eventName}});
         })
         .catch(error => {
           alert("잘못된 입력입니다.");

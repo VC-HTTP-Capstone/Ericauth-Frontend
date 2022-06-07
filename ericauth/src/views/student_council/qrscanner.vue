@@ -7,10 +7,15 @@
           <span>행사 조회</span>
           <hr />
         </div>
-
+        <div class="ScannerTop">
+          <h2>{{ $route.query.name }}</h2>
+        </div>
         <div class="scanner_layout">
           <StreamBarcodeReader @decode="readData"></StreamBarcodeReader>
         </div>
+      </div>
+      <div class="QRscanBottom">
+        QR code로 인증하세요
       </div>
     </div>
   </div>
@@ -103,14 +108,25 @@ div.right {
   }
 }
 .scanner_layout {
-  margin-left: 200px;
-  margin-top: 100px;
+  margin-left: 30%;
+  margin-top: 5%;
   width: 500px;
   height: 370px;
 }
 .profile {
   text-align: left;
   font-size: 40px;
-  font-family: "SEBANG_Gothic_Bold";
+  font-family: "IBM Plex Sans KR", sans-serif;
+}
+.QRscanBottom {
+  margin-top: 5%;
+  margin-left: 30%;
+  font-family: "IBM Plex Sans KR", sans-serif;
+  font-size: 40px;
+}
+.ScannerTop {
+  margin-top: 3%;
+  margin-left: 50%;
+  font-family: "IBM Plex Sans KR", sans-serif;
 }
 </style>

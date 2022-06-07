@@ -114,7 +114,9 @@ export const router = new VueRouter({
     },
     {
       path: "/qrscanner",
-      component: Qrscanner
+      component: Qrscanner,
+      name: 'qrscanner',
+      props: true,
     },
     {
       path: "/event_management",
