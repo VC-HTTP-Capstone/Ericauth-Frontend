@@ -87,7 +87,9 @@ export default {
     ModalView
   },
   methods: {
-    refreshPage: function() {},
+    refreshPage: function() {
+      this.$router.go();
+    },
     deleteEvent: function(eventName) {
       this.obj["email"] = this.$store.state.email;
       this.obj["eventName"] = eventName;
@@ -152,6 +154,7 @@ export default {
     getData: function() {
       this.object["email"] = this.$store.state.email;
       this.object["eventName"] = this.name;
+      console.log(this.name);
       fetch("http://localhost:8080/api/event/info", {
         method: "POST",
         headers: {
