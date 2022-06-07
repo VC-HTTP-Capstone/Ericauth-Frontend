@@ -261,7 +261,7 @@ TCR1uCSbcK/bSkcq5MKKv+vTRW0if4x9czBCd7XuhOMWozl2+dc=\
           this.$store.commit("persistedPrivatekey", {
             value: this.privateKey
           });
-          this.$router.push("council_student_holding_event");
+          this.$router.push("event_management");
         })
         .catch(error => {
           alert("잘못된 입력입니다.");
