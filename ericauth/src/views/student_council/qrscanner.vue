@@ -3,38 +3,37 @@
     <LeftSideBar></LeftSideBar>
     <div class="right fade1s">
       <div style="margin-top:30px; margin-left:50px; margin-right:300px;">
-      <div class="profile">
-        <span>행사 조회</span>
-        <hr>
-      </div>
+        <div class="profile">
+          <span>행사 조회</span>
+          <hr />
+        </div>
 
-      <div class="scanner_layout">
-        <StreamBarcodeReader @decode="readData"></StreamBarcodeReader>
-      </div>
+        <div class="scanner_layout">
+          <StreamBarcodeReader @decode="readData"></StreamBarcodeReader>
+        </div>
       </div>
     </div>
-
   </div>
 </template>
 
 <script>
-import LeftSideBar from '../../components/council_student/Council_sidebar.vue';
+import LeftSideBar from "../../components/council_student/Council_sidebar.vue";
 import { StreamBarcodeReader } from "vue-barcode-reader";
 import { JSEncrypt } from "jsencrypt";
 
 export default {
   data() {
-    return{
-      check : true
-    }
+    return {
+      check: true
+    };
   },
-  components:{
+  components: {
     LeftSideBar,
-    StreamBarcodeReader,
+    StreamBarcodeReader
   },
-  methods : {
-    readData (result) {
-      if(this.check === false){
+  methods: {
+    readData(result) {
+      if (this.check === false) {
         return 0;
       }
       this.check = false;
@@ -61,20 +60,17 @@ export default {
       })
         .then(response => response.json())
         .then(data => {
-          if(data.result === "isWrong"){
-            alert("잘못된 인증서 입니다")
+          if (data.result === "isWrong") {
+            alert("잘못된 인증서 입니다");
             this.check = true;
-          }
-          else if(data.result === "isAlreadyUsed"){
-            alert("이미 사용된 인증서 입니다")
+          } else if (data.result === "isAlreadyUsed") {
+            alert("이미 사용된 인증서 입니다");
             this.check = true;
-          }
-          else if(data.result === "notExisted"){
-            alert("존재하지 않는 행사입니다")
+          } else if (data.result === "notExisted") {
+            alert("존재하지 않는 행사입니다");
             this.check = true;
-          }
-          else{
-            alert("인증 성공")
+          } else {
+            alert("인증 성공");
             this.check = true;
           }
         })
@@ -82,10 +78,9 @@ export default {
           console.log(error);
           alert("잘못된 입력입니다.");
         });
-
     }
   }
-}
+};
 </script>
 
 <style>
@@ -107,16 +102,15 @@ div.right {
     opacity: 1;
   }
 }
-.scanner_layout{
+.scanner_layout {
   margin-left: 200px;
   margin-top: 100px;
   width: 500px;
   height: 370px;
-
 }
 .profile {
   text-align: left;
   font-size: 40px;
-  font-family: 'SEBANG_Gothic_Bold';
+  font-family: "SEBANG_Gothic_Bold";
 }
 </style>
