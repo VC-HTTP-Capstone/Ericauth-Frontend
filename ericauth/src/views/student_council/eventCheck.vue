@@ -96,7 +96,7 @@ export default {
     LeftSideBar,
     StreamBarcodeReader,
     ModalView,
-    QRscanner,
+    QRscanner
   },
   methods: {
     refreshPage: function() {
@@ -137,7 +137,7 @@ export default {
           });
         })
         .then(data => {
-          this.$router.push({name : "qrscanner", query : {name : eventName}});
+          this.$router.push({ name: "qrscanner", query: { name: eventName } });
         })
         .catch(error => {
           alert("잘못된 입력입니다.");
@@ -179,7 +179,7 @@ export default {
           this.checkStudentId = data["checkStudentId"];
           this.paymentStatus = data["paymentStatus"];
           if (data["team"] == "false") this.team = "false";
-          else this.team = "true";
+          else this.team = data["team"];
         })
         .catch(error => {
           alert("잘못된 입력입니다.");

@@ -1,63 +1,61 @@
-import Vue from 'vue';
-import Vuex from 'vuex';
+import Vue from "vue";
+import Vuex from "vuex";
 import createPersistedState from "vuex-persistedstate";
 
 Vue.use(Vuex);
 
 const store = new Vuex.Store({
-
   state: {
-    email:"uth98@naver.com",
+    email: "uth98@naver.com",
     name: "hongildong",
-    team:"admin",
-    student_id:"2xxxxxxxxx",
-    phoneNumer:"010-0000-0000",
-    paymentStatus:false,
-    publicKey:"abc",
-    privateKey:"cba",
-    qrData:"abcde",
+    team: "admin",
+    student_id: "2xxxxxxxxx",
+    phoneNumer: "010-0000-0000",
+    paymentStatus: false,
+    publicKey: "abc",
+    privateKey: "cba",
+    qrData: "abcde",
     qrDetail: "abcde",
     eventName: "ex"
   },
-  getter: {
-
-  },
+  getter: {},
   mutations: {
-    persistedID (state,payload) {
+    persistedID(state, payload) {
       state.email = payload.value;
     },
-    persistedName (state,payload) {
+    persistedName(state, payload) {
       state.name = payload.value;
     },
-    persistedSnum (state,payload) {
+    persistedSnum(state, payload) {
       state.student_id = payload.value;
     },
-    persistedTeam (state,payload) {
+    persistedTeam(state, payload) {
       state.team = payload.value;
     },
-    persistedPnum (state,payload) {
+    persistedPnum(state, payload) {
       state.phoneNumer = payload.value;
     },
-    persistedPublickey (state,payload) {
+    persistedPayment(state, payload) {
+      state.paymentStatus = payload.value;
+    },
+    persistedPublickey(state, payload) {
       state.publicKey = payload.value;
     },
-    persistedPrivatekey (state,payload) {
+    persistedPrivatekey(state, payload) {
       state.privateKey = payload.value;
     },
-    persistedQrdata (state,payload) {
+    persistedQrdata(state, payload) {
       state.qrData = payload.value;
     },
-    persistedQrdetail (state,payload) {
+    persistedQrdetail(state, payload) {
       state.qrDetail = payload.value;
     },
-    persistedEventname (state,payload) {
+    persistedEventname(state, payload) {
       state.eventName = payload.value;
     }
   },
-  action: {
-
-  },
-  plugins:[createPersistedState()]
-})
+  action: {},
+  plugins: [createPersistedState()]
+});
 
 export default store;

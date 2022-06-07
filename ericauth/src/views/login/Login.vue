@@ -227,6 +227,35 @@ TCR1uCSbcK/bSkcq5MKKv+vTRW0if4x9czBCd7XuhOMWozl2+dc=\
           this.$store.commit("persistedPrivatekey", {
             value: this.privateKey
           });
+          fetch("http://localhost:8080/api/payment", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json"
+            }
+          })
+            .then(response => response.json())
+            .then(data => {
+              let flag = false;
+              let res = data.result;
+              for (let i = 0; i < res.length; i++) {
+                if (res[i] === this.email) {
+                  flag = true;
+                }
+              }
+              if (flag) {
+                this.$store.commit("persistedPayment", {
+                  value: true
+                });
+              } else {
+                this.$store.commit("persistedPayment", {
+                  value: false
+                });
+              }
+            })
+            .catch(error => {
+              alert("잘못된 입력입니다.");
+            });
+
           this.$router.push("auth_management");
         })
         .catch(error => {
