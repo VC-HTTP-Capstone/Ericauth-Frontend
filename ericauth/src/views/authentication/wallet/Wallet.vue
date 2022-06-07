@@ -442,6 +442,7 @@
 
 <script>
 let today = new Date();
+import LeftSideBar from "../../../components/Sidebar.vue";
 import { JSEncrypt } from "jsencrypt";
 export default {
   data() {
@@ -566,38 +567,32 @@ export default {
       console.log(this.makeSerial());
       if (this.nameCheck === true) {
         li["name"] = this.name;
-      }
-      else{
+      } else {
         li["name"] = "홍길동";
       }
       if (this.teamCheck === true) {
         li["team"] = this.team;
-      }
-      else{
+      } else {
         li["team"] = "홍길동";
       }
       if (this.studentIdCheck === true) {
         li["studentId"] = this.studentId;
-      }
-      else{
+      } else {
         li["studentId"] = "홍길동";
       }
       if (this.phoneNumerCheck === true) {
         li["phoneNumber"] = this.phoneNumer;
-      }
-      else{
+      } else {
         li["phoneNumber"] = "홍길동";
       }
       if (this.issuerCheck === true) {
         li["issuer"] = this.issuer;
-      }
-      else{
+      } else {
         li["issuer"] = "홍길동";
       }
       if (this.paymentStatusCheck === true) {
         li["paymentStatus"] = this.paymentStatus;
-      }
-      else{
+      } else {
         li["paymentStatus"] = "홍길동";
       }
       let encryptor = new JSEncrypt();
@@ -608,7 +603,7 @@ export default {
         value: encrypted
       });
 
-      console.log(encrypted)
+      console.log(encrypted);
       this.$router.push("qrscan");
     },
     addNightmealvp: function() {

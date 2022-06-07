@@ -206,8 +206,6 @@ TCR1uCSbcK/bSkcq5MKKv+vTRW0if4x9czBCd7XuhOMWozl2+dc=\
       })
         .then(response => response.json())
         .then(data => {
-          console.log(data);
-          console.log(data.name);
           this.$store.commit("persistedID", {
             value: data.email
           });
