@@ -442,10 +442,9 @@
 </template>
 
 <script>
-import LeftSideBar from '../../../components/Sidebar.vue'
+import LeftSideBar from "../../../components/Sidebar.vue";
 
 let today = new Date();
-import LeftSideBar from "../../../components/Sidebar.vue";
 import { JSEncrypt } from "jsencrypt";
 export default {
   data() {
@@ -644,11 +643,11 @@ export default {
       }
 
       return text;
-    },
+    }
   },
   components: {
-    LeftSideBar,
-  },
+    LeftSideBar
+  }
 };
 </script>
 
@@ -663,7 +662,7 @@ export default {
 .child1 {
   display: flex;
   flex: 1;
-  background-color:  rgba(16, 50, 92, 0.15);
+  background-color: rgba(16, 50, 92, 0.15);
 }
 .child2 {
   display: flex;
