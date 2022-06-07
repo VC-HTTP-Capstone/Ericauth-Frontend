@@ -29,13 +29,18 @@
                   />
                 </div>
                 <div style="margin-top:20px;">
-                  <input
+                  <select
                     class="inp fade2s"
-                    placeholder="학과"
-                    type="text"
-                    style="text-align:center; font-size:19px;"
                     v-model="team"
-                  />
+                    style="font-size:19px; height:60px;"
+                  >
+                    <option disabled value="">학과</option>
+                    <option>기계공학과</option>
+                    <option>전자공학과</option>
+                    <option>분자생명공학과</option>
+                    <option>소프트웨어학부</option>
+                    <option>ICT융합학부</option>
+                  </select>
                 </div>
                 <div style="margin-top:20px;">
                   <input
