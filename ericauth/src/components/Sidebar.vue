@@ -3,8 +3,8 @@
     <div class="user_box">
       <div style="width:50%; float:left; box-sizing: border-box;">
         <img
-          src="../assets/uth.jpg"
-          width="90px"
+          src="../assets/user1.png"
+          width="100px"
           height="120px"
           style="margin-top:5px;"
         />
@@ -19,8 +19,14 @@
     </div>
     <router-link to="/auth_management">
       <div class="sidebar" style="color:white; margin-top:20px;">
-        <img src="../assets/document.png" width="45" height="45" class="mr-3" />
+        <img src="../assets/management.png" width="45" height="45" class="mr-3" />
         인증서 관리
+      </div>
+    </router-link>
+    <router-link to="/wallet">
+      <div class="sidebar" style="color:white;">
+        <img src="../assets/document.png" width="45" height="45" class="mr-3" />
+        인증서 발급
       </div>
     </router-link>
     <router-link to="/mywallet">

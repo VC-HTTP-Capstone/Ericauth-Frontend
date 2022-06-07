@@ -1,8 +1,9 @@
 <template>
   <div>
-    <div class="parent">
+    <LeftSideBar></LeftSideBar>
+    <div class="parent fade1s">
       <div class="child1"></div>
-      <div class="child2" style="background-color:#FDF6EC;">
+      <div class="child2" style="background-color:rgba(16, 50, 92, 0.15);">
         <div class="child2box2"></div>
         <div class="child2box1" style="background-color:white; border:0;">
           <center>
@@ -194,7 +195,7 @@
         </div>
         <div class="child2box2"></div>
       </div>
-      <div class="child2" style="background-color:#FDF6EC; ">
+      <div class="child2" style="background-color:rgba(16, 50, 92, 0.15); ">
         <div class="child2box2"></div>
         <div class="child2box1" style="background-color:white;">
           <center>
@@ -441,6 +442,8 @@
 </template>
 
 <script>
+import LeftSideBar from '../../../components/Sidebar.vue'
+
 let today = new Date();
 import { JSEncrypt } from "jsencrypt";
 export default {
@@ -646,8 +649,11 @@ export default {
       }
 
       return text;
-    }
-  }
+    },
+  },
+  components: {
+    LeftSideBar,
+  },
 };
 </script>
 
@@ -662,11 +668,23 @@ export default {
 .child1 {
   display: flex;
   flex: 1;
-  background-color: #fdf6ec;
+  background-color:  rgba(16, 50, 92, 0.15);
 }
 .child2 {
   display: flex;
   flex: 5;
+}
+.fade1s {
+  animation: fade-in 1.5s ease-in-out;
+}
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
 }
 .divbox {
   width: 60%;

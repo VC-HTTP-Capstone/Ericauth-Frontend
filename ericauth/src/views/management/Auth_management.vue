@@ -75,7 +75,7 @@ export default {
 <style scoped>
 .container {
   margin-top: 50px;
-  margin-left: 70px;
+  margin-left: 30px;
   margin-right: 70px;
   text-align: center;
   align-content: flex-start;
