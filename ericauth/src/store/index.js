@@ -7,9 +7,9 @@ Vue.use(Vuex);
 const store = new Vuex.Store({
 
   state: {
-    email:"empty",
+    email:"uth98@naver.com",
     name: "hongildong",
-    team:"ex",
+    team:"admin",
     student_id:"2xxxxxxxxx",
     phoneNumer:"010-0000-0000",
     paymentStatus:false,

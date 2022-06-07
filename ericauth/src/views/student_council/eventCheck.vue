@@ -4,7 +4,13 @@
     <div class="right fade1s">
       <div style="margin-top:30px; margin-left:50px; margin-right:300px;">
         <div class="profile">
-          행사 조회
+          <img
+            src="../../assets/eventInquiry.png"
+            border="1"
+            width="150px"
+            height="75px"
+            alt=""
+          />
         </div>
         <hr />
         <div class="flex-container" style="margin-top:40px">

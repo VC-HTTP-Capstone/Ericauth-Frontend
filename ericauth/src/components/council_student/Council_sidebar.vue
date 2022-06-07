@@ -9,7 +9,7 @@
           <hr>
           {{ this.$store.state.team }}
           <hr>
-          {{ this.$store.state.student_id }}
+          {{ this.$store.state.email }}
       </div>
     </div>
     <router-link to="/event_management">
